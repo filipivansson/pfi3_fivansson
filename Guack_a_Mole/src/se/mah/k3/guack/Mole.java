@@ -72,7 +72,7 @@ public class Mole implements Drawable {
 		float dy = (_posY - m.getY());
 		float dist = (float) Math.sqrt(dx * dx + dy * dy);
 		
-		if (dist < _radius) {
+		if (dist < _radius+15 && alive == true) {
 			alive = false;
 			alpha = 0;
 			hit = true;

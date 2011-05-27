@@ -18,6 +18,7 @@ public class GameEngine extends View implements Callback{
 	
 	Paint background;
 	Handler myHandler;
+	int score = 0;
 	
 	private List<Drawable> myMoles = new ArrayList<Drawable>();
 
@@ -69,6 +70,9 @@ public class GameEngine extends View implements Callback{
 		textPaint.setTextSize(35);
 		canvas.drawText("Guack a Mole", 55, 350, textPaint);
 		
+		String scoreString = Integer.toString(score);
+		canvas.drawText(scoreString, 55, 400, textPaint);
+		
 	
 		for (Drawable d : myMoles){
 			d.draw(canvas);
@@ -84,7 +88,10 @@ public class GameEngine extends View implements Callback{
 		Log.i("k3", "Touchy-touch!");
 		
 		for (Drawable d : myMoles){
-			d.pressed(event);
+			if (d.pressed(event)){
+				score++;
+			}
+				
 		}
 		return super.onTouchEvent(event);
 	}
